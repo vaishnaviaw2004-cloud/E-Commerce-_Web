@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Toggle sidebar for mobile
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('-translate-x-full');
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed z-30 inset-y-0 left-0 w-64 bg-white border-r transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
+    <div class="p-4 text-2xl font-bold text-blue-600">ShopAdmin</div>
+    <nav class="mt-6">
+      <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">🏠 Dashboard</a>
+      <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">📦 Products</a>
+      <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">🛒 Orders</a>
+      <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">👥 Customers</a>
+      <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">💰 Transactions</a>
+      <a href="#" class="block px-6 py-3 text-gray-700 hover:bg-blue-100">⚙️ Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <div class="flex-1 flex flex-col md:ml-64">
+
+    <!-- Top bar -->
+    <header class="flex items-center justify-between bg-white p-4 shadow-sm sticky top-0">
+      <div class="flex items-center gap-2">
+        <button class="md:hidden text-gray-600" onclick="toggleSidebar()">☰</button>
+        <h1 class="text-xl font-semibold">Dashboard</h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <input type="text" placeholder="Search..." class="hidden md:block border rounded-lg px-3 py-1.5">
+        <img src="https://i.pravatar.cc/40" alt="profile" class="w-10 h-10 rounded-full">
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="p-6">
+      <!-- Stats cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white p-4 rounded-xl shadow-sm">
+          <h2 class="text-gray-500 text-sm">Total Sales</h2>
+          <

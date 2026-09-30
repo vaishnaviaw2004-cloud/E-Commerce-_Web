@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - E-Commerce</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #dc3545;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    a:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Your Dashboard</h1>
+  <p>You have successfully logged in or registered!</p>
+  
+
+</body>
+</html>
+
+
+
+
+<!-- ## Detailed website code with all Features and function utilities.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - E-Commerce</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #343a40;
+      color: white;
+      padding: 15px 40px;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #ffc107;
+    }
+
+    /* Product grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
+      color: #333;
+    }
+
+    .product-card p {
+      color: #666;
+      margin: 5px 0;
+    }
+
+    .product-card button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .product-card button:hover {
+      background-color: #218838;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #343a40;
+      color: white;
+      margin-top: 30px;
+    }
+
+    /* Cart and logout buttons */
+    .right-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cart-btn, .logout-btn {
+      background-color: #ffc107;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .logout-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h2>ShopEase</h2>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">My Orders</a>
+    </div>
+    <div class="right-actions">
+      <button class="cart-btn" onclick="viewCart()">🛒 Cart (<span id='cart-count'>0</span>)</button>
+      <!-- <button class="logout-btn" onclick="logout()">Logout</button>  -->
+    </div>
+  </nav>
+
+  <section class="products" id="product-list">
+    <!-- Products will be loaded dynamically -->
+  </section>
+
+  <footer>
+    <p>© 2025 ShopEase | All Rights Reserved</p>
+  </footer>
+
+  <script>
+  const products = [
+    { id: 1, name: "Wireless Headphones", price: 1999, image: "https://images.unsplash.com/photo-1585386959984-a4155223f9a8" },
+    { id: 2, name: "Smart Watch", price: 2499, image: "https://images.unsplash.com/photo-1511732351157-1865efcb7b7b" },
+    { id: 3, name: "Gaming Mouse", price: 899, image: "https://images.unsplash.com/photo-1616469829937-54e1548e1f3b" },
+    { id: 4, name: "Bluetooth Speaker", price: 1499, image: "https://images.unsplash.com/photo-1585386959984-a4155223f9a8" },
+    { id: 5, name: "Laptop Stand", price: 1299, image: "https://images.unsplash.com/photo-1603791452906-bb38b0e2d10c" }
+  ];
+
+  let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+  document.getElementById("cart-count").textContent = cart.length;
+
+  const productList = document.getElementById("product-list");
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>₹${product.price}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+    `;
+    productList.appendChild(card);
+  });
+
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    cart.push(product);
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    document.getElementById("cart-count").textContent = cart.length;
+    alert(`${product.name} added to cart!`);
+  }
+
+  function viewCart() {
+    window.location.href = "cart.html";
+  }
+
+  function logout() {
+    alert("You have been logged out!");
+    window.location.href = "login.html";
+  }
+</script>
+
+
+<a href="login.html">Logout</a>
+
+</body>
+</html>
+

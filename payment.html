@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment - Cash on Delivery</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #666;
+    }
+
+    .payment-option {
+      background-color: #e9ecef;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    input[type="radio"] {
+      transform: scale(1.2);
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      display: inline-block;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #343a40;
+      color: white;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Payment Method</h2>
+    <p>Select your payment option</p>
+
+    <div class="payment-option">
+      <input type="radio" id="cod" name="payment" checked>
+      <label for="cod">Cash on Delivery (COD)</label>
+    </div>
+
+    <button onclick="placeOrder()">Confirm Order</button>
+
+    <a href="cart.html" class="back-btn">← Go Back to Cart</a>
+  </div>
+
+  <footer>
+    <p>© 2025 ShopEase | Secure Payment</p>
+  </footer>
+
+  <script>
+    function placeOrder() {
+      // Clear cart items after placing order
+      localStorage.removeItem('cartItems');
+
+      // Redirect to confirmation page
+      window.location.href = "order-success.html";
+      
+    }
+  </script>
+
+</body>
+</html>
